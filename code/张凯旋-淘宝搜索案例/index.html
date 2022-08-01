@@ -57,6 +57,7 @@
       $('#ipt').on('keyup', function () {
         let keywords = $(this).val().trim()
         if (keywords.length <= 0) return $('#suggest-list').empty().hide()
+
         debounceSearch(keywords)
       })
       const getSuggestList = (keywords) => {
@@ -70,72 +71,12 @@
       }
       const renderSuggestList = (data) => {
         if (data.result.length <= 0) return $('#suggest-list').empty().hide()
-        // let keywords=$(this).val().trim()
-        // if(cacheObj[keywords]){
-
-        }
+        // let key = $(this).val().trim()
+        // if (cacheObj[key]) {
+        // }
         const htmlStr = template('tpl-suggestList', data)
         $('#suggest-list').html(htmlStr).show()
       }
-
-      //1-1. 为输入框绑定keyup事件
-      // $(function () {
-      //   // 2-1、定义延时器的id
-      //   let timer = null
-
-      //   // 3-1定义全局缓存对象
-      //   let cacheObj = {}
-      //   // 2-2、定义防抖的函数
-      //   function debounceSearch(kw) {
-      //     timer = setTimeout(function () {
-      //       getSuggestList(kw)
-      //     }, 500)
-      //   }
-
-      // $('#ipt').on('keyup', function () {
-      //   // 2-3、清空timer
-      //   clearTimeout(timer)
-      //   let keywords = $(this).val().trim()
-      //   if (keywords.length <= 0) {
-      //     return $('#suggest-list').empty().hide()
-      //   }
-
-      //   // 3-4 优先从缓存对象中获取数据
-      //   // 3-4-1 先判断缓存中有无数据
-
-      //   if (cacheObj[keywords]) return renderSuggestList(cacheObj[keywords])
-
-      //   //  获取搜索建议列表
-      //   // console.log(keywords);
-      //   // getSuggestList(keywords)
-      //   debounceSearch(keywords)
-      // })
-
-      //1-2. 利用函数拿到搜索建议
-      // function getSuggestList(kw) {
-      //   $.ajax({
-      //     url: 'https://suggest.taobao.com/sug?q=' + kw,
-      //     dataType: 'jsonp',
-      //     success: function (res) {
-      //       // console.log(res);
-      //       renderSuggestList(res)
-      //     },
-      //   })
-      // }
-
-      //1-3、渲染UI结构
-      // function renderSuggestList(res) {
-      //   if (res.result.length <= 0) {
-      //     return $('#suggest-list').empty().hide()
-      //   }
-      //   let htmlStr = template('tpl-suggestList', res)
-      //   $('#suggest-list').html(htmlStr).show()
-
-      //   // 3-2、获取到用户输入的内容，当做键
-      //   let k = $('#ipt').val().trim()
-      //   // 3-3、需要将数据作为值，进行缓存
-      //   cacheObj[k] = res
-      // }
     </script>
   </body>
 </html>
